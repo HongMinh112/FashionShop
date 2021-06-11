@@ -1,0 +1,483 @@
+﻿@model FashionWebsite.Models.PRODUCT
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Layout/ProductDetailsLayout.cshtml";
+}
+<!-- header -->
+<!-- //header -->
+<!-- header-bot -->
+<!-- //header-bot -->
+<!-- banner -->
+<div class="ban-top">
+    <div class="container">
+        <div class="top_nav_left">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                </div>
+            </nav>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //banner-top -->
+<!-- Modal1 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+                <div class="col-md-8 modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">Đăng nhập <span>Ngay</span></h3>
+                    <form action="/Home/SignIn" method="post">
+                        <div class="styled-input agile-styled-input-top">
+                            <input type="text" name="FULLNAME" required="">
+                            <label>Họ tên</label>
+                            <span></span>
+                        </div>
+                        <div class="styled-input">
+                            <input type="password" name="PASSWORD" required="">
+                            <label>Mat khau</label>
+                            <span></span>
+                        </div>
+                        <input type="submit" value="Đăng Nhập">
+                    </form>
+                    <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+                        <li>
+                            <a href="#" class="facebook">
+                                <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter">
+                                <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="instagram">
+                                <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pinterest">
+                                <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p><a href="#" data-toggle="modal" data-target="#myModal2"> Bạn chưa có tài khoản?</a></p>
+
+                </div>
+                <div class="col-md-4 modal_body_right modal_body_right1">
+                    <img src="~/Content/images/log_pic.jpg" alt=" " />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- //Modal content-->
+    </div>
+</div>
+<!-- //Modal1 -->
+<!-- Modal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+                <div class="col-md-8 modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">Sign Up <span>Now</span></h3>
+                    <form action="#" method="post">
+                        <div class="styled-input agile-styled-input-top">
+                            <input type="text" name="Name" required="">
+                            <label>Name</label>
+                            <span></span>
+                        </div>
+                        <div class="styled-input">
+                            <input type="email" name="Email" required="">
+                            <label>Email</label>
+                            <span></span>
+                        </div>
+                        <div class="styled-input">
+                            <input type="password" name="password" required="">
+                            <label>Password</label>
+                            <span></span>
+                        </div>
+                        <div class="styled-input">
+                            <input type="password" name="Confirm Password" required="">
+                            <label>Confirm Password</label>
+                            <span></span>
+                        </div>
+                        <input type="submit" value="Sign Up">
+                    </form>
+                    <ul class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+                        <li>
+                            <a href="#" class="facebook">
+                                <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter">
+                                <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="instagram">
+                                <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pinterest">
+                                <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p><a href="#">By clicking register, I agree to your terms</a></p>
+
+                </div>
+                <div class="col-md-4 modal_body_right modal_body_right1">
+                    <img src="images/log_pic.jpg" alt=" " />
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- //Modal content-->
+    </div>
+</div>
+<!-- //Modal2 -->
+<!--/single_page-->
+<!-- /banner_bottom_agile_info -->
+<div class="page-head_agile_info_w3l">
+    <div class="container">
+        <h3>Chi Tiết Sản Phẩm</h3>
+        <!--/w3_short-->
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+
+                <ul class="w3_short">
+                    <li><a href="@Url.Action("Men","Product")">Trở về sản phẩm</a><i></i></li>
+                </ul>
+            </div>
+        </div>
+        <!--//w3_short-->
+    </div>
+</div>
+
+<!-- banner-bootom-w3-agileits -->
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <div class="col-md-4 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
+
+                    <ul class="slides">
+                        <li data-thumb="@Url.Content("~/Content/images/"+Model.IMAGE1)">
+                            <div class="thumb-image"> <img src="@Url.Content("~/Content/images/"+Model.IMAGE1)" data-imagezoom="true" class="img-responsive"> </div>
+                        </li>
+                        <li data-thumb="@Url.Content("~/Content/images/"+Model.IMAGE2)">
+                            <div class="thumb-image"> <img src="@Url.Content("~/Content/images/"+Model.IMAGE2)" data-imagezoom="true" class="img-responsive"> </div>
+                        </li>
+                        <li data-thumb="@Url.Content("~/Content/images/"+Model.IMAGE3)">
+                            <div class="thumb-image"> <img src="@Url.Content("~/Content/images/"+Model.IMAGE3)" data-imagezoom="true" class="img-responsive"> </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 single-right-left simpleCart_shelfItem">
+            <h3>@Model.NAME</h3>
+            @{decimal price = Model.PRICE.Value - ((Model.PRICE.Value * Model.DISCOUNT.Value) / 100);}
+            <p><span class="item_price">@price.ToString("#,##") VND</span> <del>@Model.PRICE.Value.ToString("#,##") VND</del></p>
+            <div class="rating1">
+                <span class="starRating">
+                    <input id="rating5" type="radio" name="rating" value="5">
+                    <label for="rating5">5</label>
+                    <input id="rating4" type="radio" name="rating" value="4">
+                    <label for="rating4">4</label>
+                    <input id="rating3" type="radio" name="rating" value="3" checked="">
+                    <label for="rating3">3</label>
+                    <input id="rating2" type="radio" name="rating" value="2">
+                    <label for="rating2">2</label>
+                    <input id="rating1" type="radio" name="rating" value="1">
+                    <label for="rating1">1</label>
+                </span>
+            </div>
+            <div class="color-quality">
+                <div class="color-quality-right">
+                    <h5>Thương Hiệu : @Model.TRADEMARK.NAME</h5>
+                </div>
+            </div>
+            <div class="color-quality">
+                <div class="color-quality-right">
+                    <h5>Số lượng :</h5>
+                    <input type="number" name="name" value="1" style="width:50px" />
+                </div>
+            </div>
+            <div class="occasion-cart">
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                    @using (Html.BeginForm("AddItemcart", "Cart", FormMethod.Get))
+                    {
+                        <fieldset>
+                            <input type="hidden" name="id" value="@Model.ID">
+                            <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button">
+                        </fieldset>
+                    }
+                </div>
+            </div>
+            <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+                <li class="share">Share On : </li>
+                <li>
+                    <a href="#" class="facebook">
+                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="instagram">
+                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="pinterest">
+                        <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="clearfix"> </div>
+        <!-- /new_arrivals -->
+        <div class="responsive_tabs_agileits">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    <li>Mô tả</li>
+                    <li>Thông tin bảo hành</li>
+                    <li>Thông tin thêm</li>
+                </ul>
+                <div class="resp-tabs-container">
+                    <!--/tab_one-->
+                    <div class="tab1">
+
+                        <div class="single_page_agile_its_w3ls">
+                            @Model.DESCRIPTION
+                        </div>
+                    </div>
+                    <!--//tab_one-->
+                    <div class="tab2">
+                        <div class="single_page_agile_its_w3ls">
+                            <div class="bootstrap-tab-text-grids">
+                                <div class="bootstrap-tab-text-grid">
+                                    @Model.WARRANTYINFORMATION
+                                    <div class="clearfix"> </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab3">
+
+                        <div class="single_page_agile_its_w3ls">
+                            @Model.MOREINFORMATION
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //new_arrivals -->
+        <!--/slider_owl-->
+    </div>
+</div>
+<!--//single_page-->
+<!--/grids-->
+<div class="coupons">
+    <div class="coupons-grids text-center">
+        <div class="w3layouts_mail_grid">
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>Miễn Phí Giao Hàng</h3>
+                    <p>Miễn phí giao hàng trong nội ô thành phố</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>HỖ TRỢ 24/7</h3>
+                    <p>Luôn luôn hỗ trợ khách hàng khi cần</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>HOÀN TIỀN</h3>
+                    <p>Hoàn trả tiền 100% nếu sản phẩm xảy ra vấn đề</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-gift" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>QUÀ TẶNG MIÊN PHÍ</h3>
+                    <p>Tri ân khách hàng</p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+    </div>
+</div>
+<!--grids-->
+<!-- footer -->
+<div class="footer">
+    <div class="footer_agile_inner_info_w3l">
+        <div class="col-md-3 footer-left">
+            <h2><a href="index.html" style="color:white;font-weight:bold">FH Store</a></h2>
+            <p>
+                Cam kết mang lại sự trải nghiệm những sản phẩm tuyệt vời cho khách hàng.
+            </p>
+            <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+                <li>
+                    <a href="#" class="facebook">
+                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="instagram">
+                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="pinterest">
+                        <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 footer-right">
+            <div class="sign-grds">
+                <div class="col-md-4 sign-gd">
+                    <h4>Thông Tin <span>Của Chúng Tôi</span> </h4>
+                    <ul>
+                    </ul>
+                </div>
+
+                <div class="col-md-5 sign-gd-two">
+                    <h4>Thông Tin <span>Cửa Hàng</span></h4>
+                    <div class="w3-address">
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Số Điện Thoại</h6>
+                                <p>+1 234 567 8901</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Địa chỉ eamil</h6>
+                                <p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Địa Chỉ</h6>
+                                <p>
+                                    Khánh An, U Minh, Cà Mau.
+                                </p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 sign-gd flickr-post">
+                    <h4>Flickr <span>Posts</span></h4>
+                    <ul>
+                        <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                        <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="agile_newsletter_footer">
+            <div class="col-sm-6 newsleft">
+                <h3>Đăng ký để nhận nhiều ưu đãi!</h3>
+            </div>
+            <div class="col-sm-6 newsright">
+                <form action="#" method="post">
+                    <input type="email" placeholder="Nhập email của bạn..." name="email" required="">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <p class="copy-right">&copy 2017 Elite shoppy. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+    </div>
+</div>

@@ -1,0 +1,342 @@
+﻿@using FashionWebsite.Models
+@model FashionWebsite.Models.PRODUCT
+@{
+    ViewBag.Title = "CartProduct";
+    Layout = "~/Views/Layout/ProductDetailsLayout.cshtml";
+}
+@{
+    List<CART> cARTs = Session["CART"] as List<CART>;
+}
+<script type="text/javascript" src="~/Content/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".add").bind('keyup mouseup', function () {
+            var id = $(this).attr("data-id");
+            var quantity = $(this).val();
+            $.ajax({
+                method: "POST",
+                url: "/Cart/CheckQuantityUpdate",
+                data: {
+                    id: id,
+                    quantity: quantity
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status == true) {
+                        $.ajax({
+                            method: "POST",
+                            url: "/Cart/EditCart",
+                            data: {
+                                id: id,
+                                quantity: quantity
+                            },
+                            dataType: 'html',
+                            success: function (response) {
+                                window.setTimeout(function () {
+                                    alert("Đã cập nhât giỏ hàng!");
+                                    window.location.reload();
+                                }, 500);
+                            }
+                        });
+                    }
+                    else {
+                        window.setTimeout(function () {
+                            alert("Số lượng sản phẩm đã hết!");
+                            window.location.reload();
+                        }, 500);
+                    }
+                }
+            });
+        });
+    });
+</script>
+<!DOCTYPE html>
+<!-- header -->
+<div class="header" id="home">
+    <div class="container">
+        <ul>
+            @{
+                FashionWebsite.Models.MEMBER member = Session["MEMBER"] as FashionWebsite.Models.MEMBER;
+            }
+            <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Đăng nhập </a></li>
+            <li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Đăng ký </a></li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> Liên hệ : 0915231061</li>
+            @if (member != null)
+            {
+                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">@member.FULLNAME</a></li>
+                <li><i></i> <a href="@Url.Action("Logout","Home")" style="position:absolute;right:150px;height:100px;padding:6px">Đăng xuất</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+    </ol>
+    <div class="header-bot" style="background-color:white">
+        <div class="header-bot_inner_wthreeinfo_header_mid">
+            <div class="col-md-4 header-middle">
+                <form action="#" method="post">
+                    <input type="search" name="search" placeholder="Tìm kiếm..." required="">
+                    <input type="submit" value=" ">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <!-- header-bot -->
+            <div class="col-md-4 logo_agile">
+                <h1><a style="color:black;font-size:60px;font-weight:bold">FH Store<i aria-hidden="true"></i></a></h1>
+            </div>
+            <div class="col-md-4 agileits-social top_content">
+                <ul class="social-nav model-3d-0 footer-social w3_agile_social">
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--Content-->
+    <link href="~/Content/css/CartProduct.css" rel="stylesheet" />
+    <div class="ads-grid_shop" style="background-color:white">
+        <div class="shop_inner_inf">
+            <div class="privacy about">
+                <h3><span>Giỏ Hàng</span></h3>
+                <div class="checkout-right">
+                    <h4 style="color:red;">Giỏ hàng của bạn có số sản phẩm: <span>@ViewBag.Total Sản Phẩm</span></h4>
+                    <table class="timetable_sub">
+                        <thead>
+                            <tr>
+                                <th>Số thứ tự</th>
+                                <th> Ảnh Sản Phẩm</th>
+                                <th>Số Lượng</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Tổng</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int counter = 1;
+                            }
+                            @foreach (var item in cARTs)
+                            {
+                            <tr class="rem1">
+                                <td class="invert">@counter</td>
+                                <td class="invert-image"><a href="single.html"><img style="height:150px;width:150px" src="@Url.Content("~/Content/images/"+item.IMAGE)" alt=" " class="img-responsive"></a></td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            @*<div class="entry value-minus">&nbsp;</div>
+                    <div class="entry value"><span>1</span></div>
+                    <div class="entry value-plus active">&nbsp;</div>*@
+                                            <input type="number" value="@item.QUANTITY" min="1" class="add" data-id="@item.PRODUCTID" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">@item.NAME</td>
+                                <td class="invert">@item.PRICE.Value.ToString("#,##")</td>
+                                <td class="invert">@item.TOTAL.Value.ToString("#,##")</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        @Html.ActionLink("X", "RemoveItemCart", new { id = item.ID })
+                                    </div>
+                                </td>
+                            </tr>
+                                @(counter++)
+                            }
+                        </tbody>
+                    </table>
+                    <div class="checkout-left">
+                        <div class="col-md-4 checkout-left-basket">
+                            <a href="@Url.Action("Men","Product")">Trở về sản phẩm</a>
+                            <ul>
+                                <li style="color:red">Tổng: <i></i><span>@ViewBag.Tong VNĐ</span></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                @*/Footter*@
+                <div class="footer">
+                    <div class="footer_agile_inner_info_w3l">
+                        <div class="col-md-3 footer-left">
+                            <h2><a href="index.html" style="color:white;font-weight:bold">FH Store</a></h2>
+                            <p>
+                                Cam kết mang lại sự trải nghiệm những sản phẩm tuyệt vời cho khách hàng.
+                            </p>
+                            <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+                                <li>
+                                    <a href="#" class="facebook">
+                                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter">
+                                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="instagram">
+                                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="pinterest">
+                                        <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                        <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9 footer-right">
+                            <div class="sign-grds">
+                                <div class="col-md-4 sign-gd">
+                                    <h4>Thông Tin <span>Của Chúng Tôi</span> </h4>
+                                    <ul>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-5 sign-gd-two">
+                                    <h4>Thông Tin <span>Cửa Hàng</span></h4>
+                                    <div class="w3-address">
+                                        <div class="w3-address-grid">
+                                            <div class="w3-address-left">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="w3-address-right">
+                                                <h6>Số Điện Thoại</h6>
+                                                <p>+1 234 567 8901</p>
+                                            </div>
+                                            <div class="clearfix"> </div>
+                                        </div>
+                                        <div class="w3-address-grid">
+                                            <div class="w3-address-left">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="w3-address-right">
+                                                <h6>Địa chỉ eamil</h6>
+                                                <p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+                                            </div>
+                                            <div class="clearfix"> </div>
+                                        </div>
+                                        <div class="w3-address-grid">
+                                            <div class="w3-address-left">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="w3-address-right">
+                                                <h6>Địa Chỉ</h6>
+                                                <p>
+                                                    Khánh An, U Minh, Cà Mau.
+                                                </p>
+                                            </div>
+                                            <div class="clearfix"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 sign-gd flickr-post">
+                                    <h4>Flickr <span>Posts</span></h4>
+                                    <ul>
+                                        <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                                        <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="agile_newsletter_footer">
+                            <div class="col-sm-6 newsleft">
+                                <h3>Đăng ký để nhận nhiều ưu đãi!</h3>
+                            </div>
+                            <div class="col-sm-6 newsright">
+                                <form action="#" method="post">
+                                    <input type="email" placeholder="Nhập email của bạn..." name="email" required="">
+                                    <input type="submit" value="Gửi đi">
+                                </form>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="copy-right">&copy 2017 Elite shoppy. All rights reserved | Design by <a href="http://w3layouts.com/">MinhLua</a></p>
+                    </div>
+                </div>
+                //footer
+                login
+                <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content modal-info">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body modal-spa">
+                                <div class="login-grids">
+                                    <div class="login">
+                                        <div class="login-bottom">
+                                            <h3>Sign up for free</h3>
+                                            <form>
+                                                <div class="sign-up">
+                                                    <h4>Email :</h4>
+                                                    <input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
+                                                </div>
+                                                <div class="sign-up">
+                                                    <h4>Password :</h4>
+                                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+
+                                                </div>
+                                                <div class="sign-up">
+                                                    <h4>Re-type Password :</h4>
+                                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+
+                                                </div>
+                                                <div class="sign-up">
+                                                    <input type="submit" value="REGISTER NOW">
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="login-right">
+                                            <h3>Sign in with your account</h3>
+                                            <form>
+                                                <div class="sign-in">
+                                                    <h4>Email :</h4>
+                                                    <input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
+                                                </div>
+                                                <div class="sign-in">
+                                                    <h4>Password :</h4>
+                                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                                                    <a href="#">Forgot password?</a>
+                                                </div>
+                                                <div class="single-bottom">
+                                                    <input type="checkbox" id="brand" value="">
+                                                    <label for="brand"><span></span>Remember Me.</label>
+                                                </div>
+                                                <div class="sign-in">
+                                                    <input type="submit" value="SIGNIN">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

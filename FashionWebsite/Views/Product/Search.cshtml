@@ -1,0 +1,399 @@
+﻿@model IEnumerable<FashionWebsite.Models.PRODUCT>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+<div class="page-head_agile_info_w3l">
+    <div class="container">
+        <h3 style="color:white;font-size:70px">Sản Phẩm</h3>
+        <!--/w3_short-->
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+
+                <ul class="w3_short">
+                    <li><a href="@Url.Action("Index","Home")">Trở về trang chủ</a></li>
+                    <div class="top_nav_right" style="text-align:right;">
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <!--//w3_short-->
+    </div>
+</div>
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <!-- mens -->
+        <div class="col-md-4 products-left">
+            <div class="filter-price">
+                <h3>Lọc giá sản phẩm</h3>
+                <form action="/Product/Men" method="get">
+                    <div class="form-group">
+                        <label>Từ</label>
+                        <input type="number" value="@ViewBag.From" name="from" class="form-control" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <label>Đến</label>
+                        <input type="number" value="@ViewBag.To" name="to" class="form-control" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Áp dụng" class="form-control" />
+                    </div>
+                </form>
+                @*<ul class="dropdown-menu6">
+                        <li>
+                            <div id="slider-range"></div>
+                            <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                        </li>
+                    </ul>*@
+            </div>
+            <div class="css-treeview">
+                <h4>Categories</h4>
+                <ul class="tree-list-pad">
+                    <li>
+                        <input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Men's Wear</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="item-0-0" /><label for="item-0-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Ethnic Wear</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Caps</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                    <li><a href="mens.html">Trousers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="item-0-1" /><label for="item-0-1"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Party Wear</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Caps</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                    <li><a href="mens.html">Trousers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="item-0-2" /><label for="item-0-2"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Casual Wear</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Caps</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                    <li><a href="mens.html">Trousers</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item-1" checked="checked" /><label for="item-1"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Best Collections</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> New Arrivals</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked="checked" id="item-2" /><label for="item-2"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Best Offers</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="item-2-0" /><label for="item-2-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Summer Discount Sales</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="item-2-1" /><label for="item-2-1"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Exciting Offers</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="item-2-2" /><label for="item-2-2"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Flat Discounts</label>
+                                <ul>
+                                    <li><a href="mens.html">Shirts</a></li>
+                                    <li><a href="mens.html">Shoes</a></li>
+                                    <li><a href="mens.html">Pants</a></li>
+                                    <li><a href="mens.html">SunGlasses</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="community-poll">
+                <h4>Community Poll</h4>
+                <div class="swit form">
+                    <form>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>More convenient for shipping and delivery</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Lower Price</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Track your item</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Bigger Choice</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>More colors to choose</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Secured Payment</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Money back guaranteed</label> </div></div>
+                        <div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Others</label> </div></div>
+                        <input type="submit" value="SEND">
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-8 products-right">
+            <h5>SO SÁNH SẢN PHẨM</h5>
+            <div class="sort-grid">
+                <div class="sorting">
+                    <h6>Sắp xếp theo</h6>
+                    <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                        <option value="null">Mặc Định</option>
+                        <option value="null">Name(A - Z)</option>
+                        <option value="null">Name(Z - A)</option>
+                        <option value="null">Price(High - Low)</option>
+                        <option value="null">Price(Low - High)</option>
+                        <option value="null">Model(A - Z)</option>
+                        <option value="null">Model(Z - A)</option>
+                    </select>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="sorting">
+                    <h6>Trưng bày</h6>
+                    <select id="country2" onchange="change_country(this.value)" class="frm-field required sect">
+                        <option value="null">7</option>
+                        <option value="null">14</option>
+                        <option value="null">28</option>
+                        <option value="null">35</option>
+                    </select>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="men-wear-top">
+
+                <div id="top" class="callbacks_container">
+                    <ul class="rslides" id="slider3">
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-md-4 product-men" style="width:230px;height:400px">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="@Url.Content("~/Content/images/" + item.IMAGE1)" alt="" class="pro-image-front">
+                                <img src="@Url.Content("~/Content/images/" + item.IMAGE2)" alt="" class="pro-image-back">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="@Url.Action("Detail","Product", new { ID=item.ID})" class="link-product-add-cart">Chi Tiết Sản Phẩm</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4><a href="single.html">@item.NAME</a></h4>
+                                <div class="info-product-price">
+                                    @{decimal price = item.PRICE.Value - ((item.PRICE.Value * item.DISCOUNT.Value) / 100);}
+                                    <span class="item_price">@price.ToString("#,##") VND</span>
+                                    <del>@item.PRICE.Value.ToString("#,##") VND</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            @using (Html.BeginForm("AddItemcart", "Cart", FormMethod.Get))
+                                            {
+
+                                                <fieldset>
+                                                    <input type="hidden" name="id" value="@item.ID" />
+                                                    <input type="submit" name="submit" value="Đưa vào giỏ hàng" class="button" />
+                                                </fieldset>
+
+                                            }
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Hiện chưa có sản phẩm nào trong tầm giá này</p>
+            }
+        </div>
+    </div>
+    <!-- //mens -->
+    <!--/grids-->
+    <div class="coupons-grids text-center">
+        <div class="w3layouts_mail_grid">
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>Miễn Phí Giao Hàng</h3>
+                    <p>Miễn phí giao hàng trong nội ô thành phố</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>HỖ TRỢ 24/7</h3>
+                    <p>Luôn luôn hỗ trợ khách hàng khi cần</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>HOÀN TIỀN</h3>
+                    <p>Hoàn trả tiền 100% nếu sản phẩm xảy ra vấn đề</p>
+                </div>
+            </div>
+            <div class="col-md-3 w3layouts_mail_grid_left">
+                <div class="w3layouts_mail_grid_left1 hvr-radial-out">
+                    <i class="fa fa-gift" aria-hidden="true"></i>
+                </div>
+                <div class="w3layouts_mail_grid_left2">
+                    <h3>QUÀ TẶNG MIÊN PHÍ</h3>
+                    <p>Tri ân khách hàng</p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_agile_inner_info_w3l">
+            <div class="col-md-3 footer-left">
+                <h2><a href="index.html" style="color:white;font-weight:bold">FH Store</a></h2>
+                <p>
+                    Cam kết mang lại sự trải nghiệm những sản phẩm tuyệt vời cho khách hàng.
+                </p>
+                <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+                    <li>
+                        <a href="#" class="facebook">
+                            <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="instagram">
+                            <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="pinterest">
+                            <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9 footer-right">
+                <div class="sign-grds">
+                    <div class="col-md-4 sign-gd">
+                        <h4>Thông Tin <span>Của Chúng Tôi</span> </h4>
+                        <ul>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-5 sign-gd-two">
+                        <h4>Thông Tin <span>Cửa Hàng</span></h4>
+                        <div class="w3-address">
+                            <div class="w3-address-grid">
+                                <div class="w3-address-left">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div class="w3-address-right">
+                                    <h6>Số Điện Thoại</h6>
+                                    <p>+1 234 567 8901</p>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="w3-address-grid">
+                                <div class="w3-address-left">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="w3-address-right">
+                                    <h6>Địa chỉ eamil</h6>
+                                    <p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="w3-address-grid">
+                                <div class="w3-address-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </div>
+                                <div class="w3-address-right">
+                                    <h6>Địa Chỉ</h6>
+                                    <p>
+                                        Khánh An, U Minh, Cà Mau.
+                                    </p>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 sign-gd flickr-post">
+                        <h4>Flickr <span>Posts</span></h4>
+                        <ul>
+                            <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t1.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t3.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t2.jpg" alt=" " class="img-responsive" /></a></li>
+                            <li><a href="single.html"><img src="~/Content/images/t4.jpg" alt=" " class="img-responsive" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="agile_newsletter_footer">
+                <div class="col-sm-6 newsleft">
+                    <h3>Đăng ký để nhận nhiều ưu đãi!</h3>
+                </div>
+                <div class="col-sm-6 newsright">
+                    <form action="#" method="post">
+                        <input type="email" placeholder="Nhập email của bạn..." name="email" required="">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <p class="copy-right">&copy 2017 Elite shoppy. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+    </div>

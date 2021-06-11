@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@*<div class="main-content">*@
+    @*<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">*@
+        <!--left-fixed -navigation-->
+        @*<dsidebar-leftiv class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </dsidebar-leftiv>*@
+        @*<aside class="sidebar-left">*@
+            <!-- /.navbar-collapse -->
+        </aside>
+    </div>
+    <!--left-fixed -navigation-->
+    <!-- header-starts -->
+    <!-- //header-ends -->
+    <!-- main content start-->
+    <div id="page-wrapper">
+        <div class="main-page login-page ">
+            <h2 class="title1">Đăng Nhập</h2>
+            <div class="widget-shadow">
+                <div class="login-body">
+                    <form action="/Admin/Login" method="post">
+                        <input type="email" class="user" name="EMAIL" placeholder="Username" required="">
+                        <input type="password" name="PASSWORD" class="lock" placeholder="Password" required="">
+                        <div class="forgot-grid">
+                            <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Nhớ mật khẩu</label>
+                            <div class="forgot">
+                                <a href="#">Quên mật khẩu?</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <input type="submit" name="Đăng Nhập" value="Đăng Nhập">
+                        <div class="registration">
+                            Bạn chưa có tài khoản ?
+                            <a class="" href="signup.html">
+                                Tạo tài khoản
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+    </div>
+    <!--//footer-->
+@*</div>*@

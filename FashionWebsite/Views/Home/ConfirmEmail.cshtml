@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "EmailConfirm";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<p>
+    @ViewBag.Email
+    <br />
+    Nhập mã xác nhận Email của bạn là:<br />
+    @using (Html.BeginForm("ConfirmEmail","Home",FormMethod.Post))
+    {
+        <input type="text" name="CAPCHA"/>
+        <input type="text" name="ID" value="@ViewBag.ID" hidden="hidden"/>
+        <input type="submit" value="Xác Nhận" />
+    }
+</p>

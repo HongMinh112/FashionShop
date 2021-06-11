@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebShoseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCESSTIMECOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATE" Type="datetime" Nullable="false" />
+          <Property Name="ACCESSTIME" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEMBERID" Type="int" />
+          <Property Name="PRODUCTID" Type="int" />
+          <Property Name="NAME" Type="nvarchar(max)" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TOTAL" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IMAGE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="COLORPRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCTCOLOR" Type="int" />
+          <Property Name="COLORID" Type="int" />
+        </EntityType>
+        <EntityType Name="EMLOYEE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="PASSWORD" Type="nvarchar(max)" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" />
+          <Property Name="EMLOYEETYPEID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMLOYEETYPE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GENDER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEMBERCATEGORYID" Type="int" />
+          <Property Name="FULLNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONENUMBER" Type="int" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="EMAILCONFIGMER" Type="bit" />
+          <Property Name="CAPCHA" Type="nvarchar(max)" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MEMBERCATOGERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FULLNAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ODER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTOMERID" Type="int" />
+          <Property Name="DATAODER" Type="datetime" />
+          <Property Name="DATASHIP" Type="datetime" />
+          <Property Name="OFFER" Type="bit" />
+          <Property Name="ISPAID" Type="bit" />
+          <Property Name="ISCANCEL" Type="bit" />
+          <Property Name="ISDELETE" Type="bit" />
+        </EntityType>
+        <EntityType Name="ODERDETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ODERID" Type="int" />
+          <Property Name="PRODUCTID" Type="int" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="TRADEMARKID" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IMAGE1" Type="nvarchar(max)" />
+          <Property Name="IMAGE2" Type="nvarchar(max)" />
+          <Property Name="IMAGE3" Type="nvarchar(max)" />
+          <Property Name="IMAGE4" Type="nvarchar(max)" />
+          <Property Name="CATEGORYID" Type="int" />
+          <Property Name="PROMOTIONPRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="HOMEFLAG" Type="bit" />
+          <Property Name="HOTFLAG" Type="bit" />
+          <Property Name="VIEWCOUNT" Type="int" />
+          <Property Name="COMMENTCOUNT" Type="int" />
+          <Property Name="PURCHASECOUNT" Type="int" />
+          <Property Name="ISNEW" Type="nvarchar" MaxLength="1" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="LASTUPDATEDATE" Type="datetime" />
+          <Property Name="GENDERID" Type="int" />
+          <Property Name="MOREINFORMATION" Type="nvarchar(max)" />
+          <Property Name="WARRANTYINFORMATION" Type="nvarchar(max)" />
+          <Property Name="DISCOUNT" Type="int" />
+          <Property Name="CARTID" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCTCATOGERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="10" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="LASTUPDATEDATE" Type="datetime" />
+          <Property Name="GENDERID" Type="int" />
+          <Property Name="SUBCATEGORYID" Type="int" />
+        </EntityType>
+        <EntityType Name="SIZEPRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCTID" Type="int" />
+          <Property Name="SIZE" Type="int" />
+        </EntityType>
+        <EntityType Name="SUBCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TRADEMARK">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_EMLOYEE_EMLOYEE">
+          <End Role="EMLOYEETYPE" Type="Self.EMLOYEETYPE" Multiplicity="1" />
+          <End Role="EMLOYEE" Type="Self.EMLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMLOYEETYPE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMLOYEE">
+              <PropertyRef Name="EMLOYEETYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBER_MEMBERCATOGERY">
+          <End Role="MEMBERCATOGERY" Type="Self.MEMBERCATOGERY" Multiplicity="0..1" />
+          <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBERCATOGERY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MEMBER">
+              <PropertyRef Name="MEMBERCATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_CART">
+          <End Role="CART" Type="Self.CART" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="CARTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_GENDER">
+          <End Role="GENDER" Type="Self.GENDER" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_TRADEMARK">
+          <End Role="TRADEMARK" Type="Self.TRADEMARK" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRADEMARK">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="TRADEMARKID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTCATOGERY_GENDER">
+          <End Role="GENDER" Type="Self.GENDER" Multiplicity="0..1" />
+          <End Role="PRODUCTCATOGERY" Type="Self.PRODUCTCATOGERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTCATOGERY">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTCATOGERY_SUBCATEGORY">
+          <End Role="SUBCATEGORY" Type="Self.SUBCATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCTCATOGERY" Type="Self.PRODUCTCATOGERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTCATOGERY">
+              <PropertyRef Name="SUBCATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebShoseModelStoreContainer">
+          <EntitySet Name="ACCESSTIMECOUNT" EntityType="Self.ACCESSTIMECOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CART" EntityType="Self.CART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLOR" EntityType="Self.COLOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLORPRODUCT" EntityType="Self.COLORPRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMLOYEE" EntityType="Self.EMLOYEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMLOYEETYPE" EntityType="Self.EMLOYEETYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GENDER" EntityType="Self.GENDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBERCATOGERY" EntityType="Self.MEMBERCATOGERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ODER" EntityType="Self.ODER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ODERDETAIL" EntityType="Self.ODERDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTCATOGERY" EntityType="Self.PRODUCTCATOGERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIZEPRODUCT" EntityType="Self.SIZEPRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUBCATEGORY" EntityType="Self.SUBCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRADEMARK" EntityType="Self.TRADEMARK" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EMLOYEE_EMLOYEE" Association="Self.FK_EMLOYEE_EMLOYEE">
+            <End Role="EMLOYEETYPE" EntitySet="EMLOYEETYPE" />
+            <End Role="EMLOYEE" EntitySet="EMLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBER_MEMBERCATOGERY" Association="Self.FK_MEMBER_MEMBERCATOGERY">
+            <End Role="MEMBERCATOGERY" EntitySet="MEMBERCATOGERY" />
+            <End Role="MEMBER" EntitySet="MEMBER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_CART" Association="Self.FK_PRODUCT_CART">
+            <End Role="CART" EntitySet="CART" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_GENDER" Association="Self.FK_PRODUCT_GENDER">
+            <End Role="GENDER" EntitySet="GENDER" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_TRADEMARK" Association="Self.FK_PRODUCT_TRADEMARK">
+            <End Role="TRADEMARK" EntitySet="TRADEMARK" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTCATOGERY_GENDER" Association="Self.FK_PRODUCTCATOGERY_GENDER">
+            <End Role="GENDER" EntitySet="GENDER" />
+            <End Role="PRODUCTCATOGERY" EntitySet="PRODUCTCATOGERY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTCATOGERY_SUBCATEGORY" Association="Self.FK_PRODUCTCATOGERY_SUBCATEGORY">
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORY" />
+            <End Role="PRODUCTCATOGERY" EntitySet="PRODUCTCATOGERY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebShoseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebShoseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCESSTIMECOUNTs" EntityType="WebShoseModel.ACCESSTIMECOUNT" />
+          <EntitySet Name="CARTs" EntityType="WebShoseModel.CART" />
+          <EntitySet Name="COLORs" EntityType="WebShoseModel.COLOR" />
+          <EntitySet Name="COLORPRODUCTs" EntityType="WebShoseModel.COLORPRODUCT" />
+          <EntitySet Name="EMLOYEEs" EntityType="WebShoseModel.EMLOYEE" />
+          <EntitySet Name="EMLOYEETYPEs" EntityType="WebShoseModel.EMLOYEETYPE" />
+          <EntitySet Name="GENDERs" EntityType="WebShoseModel.GENDER" />
+          <EntitySet Name="MEMBERs" EntityType="WebShoseModel.MEMBER" />
+          <EntitySet Name="MEMBERCATOGERies" EntityType="WebShoseModel.MEMBERCATOGERY" />
+          <EntitySet Name="ODERs" EntityType="WebShoseModel.ODER" />
+          <EntitySet Name="ODERDETAILs" EntityType="WebShoseModel.ODERDETAIL" />
+          <EntitySet Name="PRODUCTs" EntityType="WebShoseModel.PRODUCT" />
+          <EntitySet Name="PRODUCTCATOGERies" EntityType="WebShoseModel.PRODUCTCATOGERY" />
+          <EntitySet Name="SIZEPRODUCTs" EntityType="WebShoseModel.SIZEPRODUCT" />
+          <EntitySet Name="SUBCATEGORies" EntityType="WebShoseModel.SUBCATEGORY" />
+          <EntitySet Name="sysdiagrams" EntityType="WebShoseModel.sysdiagram" />
+          <EntitySet Name="TRADEMARKs" EntityType="WebShoseModel.TRADEMARK" />
+          <AssociationSet Name="FK_PRODUCT_CART" Association="WebShoseModel.FK_PRODUCT_CART">
+            <End Role="CART" EntitySet="CARTs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMLOYEE_EMLOYEE" Association="WebShoseModel.FK_EMLOYEE_EMLOYEE">
+            <End Role="EMLOYEETYPE" EntitySet="EMLOYEETYPEs" />
+            <End Role="EMLOYEE" EntitySet="EMLOYEEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_GENDER" Association="WebShoseModel.FK_PRODUCT_GENDER">
+            <End Role="GENDER" EntitySet="GENDERs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTCATOGERY_GENDER" Association="WebShoseModel.FK_PRODUCTCATOGERY_GENDER">
+            <End Role="GENDER" EntitySet="GENDERs" />
+            <End Role="PRODUCTCATOGERY" EntitySet="PRODUCTCATOGERies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBER_MEMBERCATOGERY" Association="WebShoseModel.FK_MEMBER_MEMBERCATOGERY">
+            <End Role="MEMBERCATOGERY" EntitySet="MEMBERCATOGERies" />
+            <End Role="MEMBER" EntitySet="MEMBERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_TRADEMARK" Association="WebShoseModel.FK_PRODUCT_TRADEMARK">
+            <End Role="TRADEMARK" EntitySet="TRADEMARKs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTCATOGERY_SUBCATEGORY" Association="WebShoseModel.FK_PRODUCTCATOGERY_SUBCATEGORY">
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORies" />
+            <End Role="PRODUCTCATOGERY" EntitySet="PRODUCTCATOGERies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ACCESSTIMECOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACCESSTIME" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEMBERID" Type="Int32" />
+          <Property Name="PRODUCTID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTs" Relationship="WebShoseModel.FK_PRODUCT_CART" FromRole="CART" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="COLORPRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCTCOLOR" Type="Int32" />
+          <Property Name="COLORID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EMLOYEE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMLOYEETYPEID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EMLOYEETYPE" Relationship="WebShoseModel.FK_EMLOYEE_EMLOYEE" FromRole="EMLOYEE" ToRole="EMLOYEETYPE" />
+        </EntityType>
+        <EntityType Name="EMLOYEETYPE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EMLOYEEs" Relationship="WebShoseModel.FK_EMLOYEE_EMLOYEE" FromRole="EMLOYEETYPE" ToRole="EMLOYEE" />
+        </EntityType>
+        <EntityType Name="GENDER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTs" Relationship="WebShoseModel.FK_PRODUCT_GENDER" FromRole="GENDER" ToRole="PRODUCT" />
+          <NavigationProperty Name="PRODUCTCATOGERies" Relationship="WebShoseModel.FK_PRODUCTCATOGERY_GENDER" FromRole="GENDER" ToRole="PRODUCTCATOGERY" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEMBERCATEGORYID" Type="Int32" />
+          <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONENUMBER" Type="Int32" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EMAILCONFIGMER" Type="Boolean" />
+          <Property Name="CAPCHA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEMBERCATOGERY" Relationship="WebShoseModel.FK_MEMBER_MEMBERCATOGERY" FromRole="MEMBER" ToRole="MEMBERCATOGERY" />
+        </EntityType>
+        <EntityType Name="MEMBERCATOGERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEMBERs" Relationship="WebShoseModel.FK_MEMBER_MEMBERCATOGERY" FromRole="MEMBERCATOGERY" ToRole="MEMBER" />
+        </EntityType>
+        <EntityType Name="ODER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMERID" Type="Int32" />
+          <Property Name="DATAODER" Type="DateTime" Precision="3" />
+          <Property Name="DATASHIP" Type="DateTime" Precision="3" />
+          <Property Name="OFFER" Type="Boolean" />
+          <Property Name="ISPAID" Type="Boolean" />
+          <Property Name="ISCANCEL" Type="Boolean" />
+          <Property Name="ISDELETE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ODERDETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ODERID" Type="Int32" />
+          <Property Name="PRODUCTID" Type="Int32" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TRADEMARKID" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IMAGE1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORYID" Type="Int32" />
+          <Property Name="PROMOTIONPRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOMEFLAG" Type="Boolean" />
+          <Property Name="HOTFLAG" Type="Boolean" />
+          <Property Name="VIEWCOUNT" Type="Int32" />
+          <Property Name="COMMENTCOUNT" Type="Int32" />
+          <Property Name="PURCHASECOUNT" Type="Int32" />
+          <Property Name="ISNEW" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="LASTUPDATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="GENDERID" Type="Int32" />
+          <Property Name="MOREINFORMATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WARRANTYINFORMATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DISCOUNT" Type="Int32" />
+          <Property Name="CARTID" Type="Int32" />
+          <NavigationProperty Name="CART" Relationship="WebShoseModel.FK_PRODUCT_CART" FromRole="PRODUCT" ToRole="CART" />
+          <NavigationProperty Name="GENDER" Relationship="WebShoseModel.FK_PRODUCT_GENDER" FromRole="PRODUCT" ToRole="GENDER" />
+          <NavigationProperty Name="TRADEMARK" Relationship="WebShoseModel.FK_PRODUCT_TRADEMARK" FromRole="PRODUCT" ToRole="TRADEMARK" />
+        </EntityType>
+        <EntityType Name="PRODUCTCATOGERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="LASTUPDATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="GENDERID" Type="Int32" />
+          <Property Name="SUBCATEGORYID" Type="Int32" />
+          <NavigationProperty Name="GENDER" Relationship="WebShoseModel.FK_PRODUCTCATOGERY_GENDER" FromRole="PRODUCTCATOGERY" ToRole="GENDER" />
+          <NavigationProperty Name="SUBCATEGORY" Relationship="WebShoseModel.FK_PRODUCTCATOGERY_SUBCATEGORY" FromRole="PRODUCTCATOGERY" ToRole="SUBCATEGORY" />
+        </EntityType>
+        <EntityType Name="SIZEPRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCTID" Type="Int32" />
+          <Property Name="SIZE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SUBCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTCATOGERies" Relationship="WebShoseModel.FK_PRODUCTCATOGERY_SUBCATEGORY" FromRole="SUBCATEGORY" ToRole="PRODUCTCATOGERY" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRADEMARK">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTs" Relationship="WebShoseModel.FK_PRODUCT_TRADEMARK" FromRole="TRADEMARK" ToRole="PRODUCT" />
+        </EntityType>
+        <Association Name="FK_PRODUCT_CART">
+          <End Type="WebShoseModel.CART" Role="CART" Multiplicity="0..1" />
+          <End Type="WebShoseModel.PRODUCT" Role="PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="CARTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMLOYEE_EMLOYEE">
+          <End Type="WebShoseModel.EMLOYEETYPE" Role="EMLOYEETYPE" Multiplicity="1" />
+          <End Type="WebShoseModel.EMLOYEE" Role="EMLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMLOYEETYPE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMLOYEE">
+              <PropertyRef Name="EMLOYEETYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_GENDER">
+          <End Type="WebShoseModel.GENDER" Role="GENDER" Multiplicity="0..1" />
+          <End Type="WebShoseModel.PRODUCT" Role="PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTCATOGERY_GENDER">
+          <End Type="WebShoseModel.GENDER" Role="GENDER" Multiplicity="0..1" />
+          <End Type="WebShoseModel.PRODUCTCATOGERY" Role="PRODUCTCATOGERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTCATOGERY">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBER_MEMBERCATOGERY">
+          <End Type="WebShoseModel.MEMBERCATOGERY" Role="MEMBERCATOGERY" Multiplicity="0..1" />
+          <End Type="WebShoseModel.MEMBER" Role="MEMBER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBERCATOGERY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MEMBER">
+              <PropertyRef Name="MEMBERCATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_TRADEMARK">
+          <End Type="WebShoseModel.TRADEMARK" Role="TRADEMARK" Multiplicity="0..1" />
+          <End Type="WebShoseModel.PRODUCT" Role="PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRADEMARK">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="TRADEMARKID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTCATOGERY_SUBCATEGORY">
+          <End Type="WebShoseModel.SUBCATEGORY" Role="SUBCATEGORY" Multiplicity="0..1" />
+          <End Type="WebShoseModel.PRODUCTCATOGERY" Role="PRODUCTCATOGERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTCATOGERY">
+              <PropertyRef Name="SUBCATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebShoseModelStoreContainer" CdmEntityContainer="WebShoseEntities">
+          <EntitySetMapping Name="ACCESSTIMECOUNTs">
+            <EntityTypeMapping TypeName="WebShoseModel.ACCESSTIMECOUNT">
+              <MappingFragment StoreEntitySet="ACCESSTIMECOUNT">
+                <ScalarProperty Name="ACCESSTIME" ColumnName="ACCESSTIME" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARTs">
+            <EntityTypeMapping TypeName="WebShoseModel.CART">
+              <MappingFragment StoreEntitySet="CART">
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="MEMBERID" ColumnName="MEMBERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLORs">
+            <EntityTypeMapping TypeName="WebShoseModel.COLOR">
+              <MappingFragment StoreEntitySet="COLOR">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLORPRODUCTs">
+            <EntityTypeMapping TypeName="WebShoseModel.COLORPRODUCT">
+              <MappingFragment StoreEntitySet="COLORPRODUCT">
+                <ScalarProperty Name="COLORID" ColumnName="COLORID" />
+                <ScalarProperty Name="PRODUCTCOLOR" ColumnName="PRODUCTCOLOR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMLOYEEs">
+            <EntityTypeMapping TypeName="WebShoseModel.EMLOYEE">
+              <MappingFragment StoreEntitySet="EMLOYEE">
+                <ScalarProperty Name="EMLOYEETYPEID" ColumnName="EMLOYEETYPEID" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMLOYEETYPEs">
+            <EntityTypeMapping TypeName="WebShoseModel.EMLOYEETYPE">
+              <MappingFragment StoreEntitySet="EMLOYEETYPE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GENDERs">
+            <EntityTypeMapping TypeName="WebShoseModel.GENDER">
+              <MappingFragment StoreEntitySet="GENDER">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERs">
+            <EntityTypeMapping TypeName="WebShoseModel.MEMBER">
+              <MappingFragment StoreEntitySet="MEMBER">
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CAPCHA" ColumnName="CAPCHA" />
+                <ScalarProperty Name="EMAILCONFIGMER" ColumnName="EMAILCONFIGMER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="MEMBERCATEGORYID" ColumnName="MEMBERCATEGORYID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERCATOGERies">
+            <EntityTypeMapping TypeName="WebShoseModel.MEMBERCATOGERY">
+              <MappingFragment StoreEntitySet="MEMBERCATOGERY">
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODERs">
+            <EntityTypeMapping TypeName="WebShoseModel.ODER">
+              <MappingFragment StoreEntitySet="ODER">
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+                <ScalarProperty Name="ISPAID" ColumnName="ISPAID" />
+                <ScalarProperty Name="OFFER" ColumnName="OFFER" />
+                <ScalarProperty Name="DATASHIP" ColumnName="DATASHIP" />
+                <ScalarProperty Name="DATAODER" ColumnName="DATAODER" />
+                <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODERDETAILs">
+            <EntityTypeMapping TypeName="WebShoseModel.ODERDETAIL">
+              <MappingFragment StoreEntitySet="ODERDETAIL">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="ODERID" ColumnName="ODERID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="WebShoseModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="CARTID" ColumnName="CARTID" />
+                <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+                <ScalarProperty Name="WARRANTYINFORMATION" ColumnName="WARRANTYINFORMATION" />
+                <ScalarProperty Name="MOREINFORMATION" ColumnName="MOREINFORMATION" />
+                <ScalarProperty Name="GENDERID" ColumnName="GENDERID" />
+                <ScalarProperty Name="LASTUPDATEDATE" ColumnName="LASTUPDATEDATE" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ISNEW" ColumnName="ISNEW" />
+                <ScalarProperty Name="PURCHASECOUNT" ColumnName="PURCHASECOUNT" />
+                <ScalarProperty Name="COMMENTCOUNT" ColumnName="COMMENTCOUNT" />
+                <ScalarProperty Name="VIEWCOUNT" ColumnName="VIEWCOUNT" />
+                <ScalarProperty Name="HOTFLAG" ColumnName="HOTFLAG" />
+                <ScalarProperty Name="HOMEFLAG" ColumnName="HOMEFLAG" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PROMOTIONPRICE" ColumnName="PROMOTIONPRICE" />
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="IMAGE4" ColumnName="IMAGE4" />
+                <ScalarProperty Name="IMAGE3" ColumnName="IMAGE3" />
+                <ScalarProperty Name="IMAGE2" ColumnName="IMAGE2" />
+                <ScalarProperty Name="IMAGE1" ColumnName="IMAGE1" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="TRADEMARKID" ColumnName="TRADEMARKID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTCATOGERies">
+            <EntityTypeMapping TypeName="WebShoseModel.PRODUCTCATOGERY">
+              <MappingFragment StoreEntitySet="PRODUCTCATOGERY">
+                <ScalarProperty Name="SUBCATEGORYID" ColumnName="SUBCATEGORYID" />
+                <ScalarProperty Name="GENDERID" ColumnName="GENDERID" />
+                <ScalarProperty Name="LASTUPDATEDATE" ColumnName="LASTUPDATEDATE" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIZEPRODUCTs">
+            <EntityTypeMapping TypeName="WebShoseModel.SIZEPRODUCT">
+              <MappingFragment StoreEntitySet="SIZEPRODUCT">
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBCATEGORies">
+            <EntityTypeMapping TypeName="WebShoseModel.SUBCATEGORY">
+              <MappingFragment StoreEntitySet="SUBCATEGORY">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WebShoseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRADEMARKs">
+            <EntityTypeMapping TypeName="WebShoseModel.TRADEMARK">
+              <MappingFragment StoreEntitySet="TRADEMARK">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
